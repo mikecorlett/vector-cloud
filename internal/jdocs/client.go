@@ -28,6 +28,7 @@ func newConn(ctx context.Context, opts *options) (*conn, error) {
 	pool := rootcerts.ServerCertPool()
 
 	_ = pool.AppendCertsFromPEM([]byte(escapepodRootPEM))
+	_ = pool.AppendCertsFromPEM([]byte(chipperRootPEM))
 
 	dialOpts := []grpc.DialOption{
 		grpc.WithTransportCredentials(
